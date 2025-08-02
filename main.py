@@ -131,11 +131,11 @@ def main():
     Main function to train DART model and evaluate its performance.
     """
     # Apply custom coherence patch
-    apply_custom_coherence_patch()
+    apply_custom_coherence_patch() #fix TC nan in gensim
     
     # Download dataset
-    print("Downloading NYT dataset...")
-    download_dataset('NYT', cache_path='./datasets')
+    # print("Downloading NYT dataset...")
+    # download_dataset('NYT', cache_path='./datasets')
     
     # Configuration
     device = 'cuda'
