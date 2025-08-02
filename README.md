@@ -65,10 +65,7 @@ The model supports multiple benchmark datasets used in the paper:
 To use a different dataset, modify the dataset name in `main.py`:
 
 ```python
-# Change this line in main.py
-download_dataset('DATASET_NAME', cache_path='./datasets')
-
-# And update the dataset directory
+# Change the dataset directory
 dataset_dir = "./datasets/DATASET_NAME"
 ```
 
