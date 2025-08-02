@@ -23,14 +23,6 @@ dataset_dir = "./datasets/NYT"
 
 dataset = DynamicDataset(dataset_dir, batch_size=200, read_labels=True, device=device)
 
-# Store results
-results = []
-
-# Iterate through parameter combinations
-# for weight_neg, weight_beta_align, weight_alpha in param_combinations:
-#     # Set seeds for reproducibility
-
-#     print(f"\nTraining with parameters: weight_neg={weight_neg}, weight_beta_align={weight_beta_align}, weight_alpha={weight_alpha}")
 
 model = DART(
     vocab_size=dataset.vocab_size,
@@ -43,7 +35,6 @@ model = DART(
     weight_neg=7e+7,
     weight_pos=1.0,
     weight_beta_align=100,
-    weight_alpha=1,
     beta_temp=1,
     dropout=0.01,
 
@@ -118,34 +109,3 @@ print(f"Temporal Topic Coherence (TTC): {ttc:.4f}")
 print(f"Temporal Topic Smoothness (TTS): {tts:.4f}")
 print(f"Temporal Topic Quality (TTQ): {ttq:.4f}")
 print(f"Topic Quality (TQ_avg): {tq_avg:.4f}")
-
-# # Store results
-# results.append({
-#     'weight_neg': weight_neg,
-#     'weight_beta_align': weight_beta_align,
-#     'weight_alpha': weight_alpha,
-
-#     'dynamic_TC': dynamic_TC,
-#     'dynamic_TD': dynamic_TD,
-#     'purity': purity,
-#     'nmi': nmi,
-#     'acc':acc,
-#     'f1':f1,
-#     'TTQ_avg': ttq_avg,
-#     'DTQ': dtq,
-#     'TQ_avg': tq_avg,
-#     'TTC': ttc,
-#     'TTS': tts,
-#     'TTQ': ttq
-# })
-
-# # Find and display best parameters
-# print(results)
-# best_dtq_result = max(results, key=lambda x: x['DTQ'])
-# print("\nBest parameters based on Dynamic Topic Quality (DTQ):")
-# print(f"weight_neg={best_dtq_result['weight_neg']}, weight_beta_align={best_dtq_result['weight_beta_align']}, weight_alpha={best_dtq_result['weight_alpha']}")
-# print(f"dynamic_TC={best_dtq_result['dynamic_TC']}, dynamic_TD={best_dtq_result['dynamic_TD']}, TTQ_avg={best_dtq_result['TTQ_avg']}, DTQ={best_dtq_result['DTQ']}")
-# import pandas as pd
-# data = pd.DataFrame(results)
-# print(data)
-# data.to_csv('output.csv')
